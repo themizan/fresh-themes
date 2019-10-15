@@ -1,0 +1,27 @@
+{{#section "governance"}}
+<hr>
+<section id="governance">
+  {{#> header-governance }}
+    {{> header-icon _title="GOVERNANCE" _section="governance" _hdricon=(lookup . '_icon') }}
+  {{/header-governance}}
+
+  {{#each r.governance}}
+  	{{#> body-governance }}
+		<div>
+		<h3>{{#if role}}<em>{{{ role }}}</em>{{/if}}{{#if organization}},{{/if}}
+		{{#if url}}
+		<a href="{{{ url }}}">{{{ organization }}}</a>
+		{{else}}
+		{{{ organization }}}
+		{{/if}}
+		</h3>
+		{{#if start}}<span class="tenure">{{dateRange .}}</span>{{/if}}
+		{{#if keywords}}
+		{{#if start}}| {{/if}}<span class="keywords">{{#each keywords}}{{{ . }}} {{/each}}</span>
+		{{/if}}
+		{{{ summary }}}
+		{{> highlights }}
+		</div>
+	{{/body-governance}}
+  {{/each}}
+{{/section}}
